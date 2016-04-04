@@ -1,6 +1,19 @@
 ﻿{
+  "general": {
+		"send": "Send",
+		"save": "Save",
+		"fill": "fill the field"
+  },
+
   "menu": {
     "books": "My Books",
     "add":  "Add book"
+  },
+
+  "newBook": {
+    "chkReading": "I reading this book now",
+	"total_page": "Number of pages",
+	"actual_page": "I´m on page",
+	"book_name": "Book´s Name"
   }
 }
