@@ -13,13 +13,35 @@ $(document).ready(function () {
         }
     });
 
-    $('#FormNewBook').submit(function (e) {
-        alert('it´s come');
-        if ($('#txtName').val() === "") {
-            //$('#lblNameError').attr("data-i18n", "general.fill");
-        }
+    var t = ln.init();
+    setValidation();
 
-        e.preventDefault();
-        //alert('works');
+    i18n.init({
+        lng: "pt"
+    }, function (t) {
+        $(document).i18n();
+    });
+
+    $('#form').validate({
+        messages: "Please specify your total of pages",
+        txtPageTotal: "Please specify your total of pages"
     });
 });
+
+
+//set validation plugin
+function setValidation() {
+    $.validator.setDefaults({
+        errorClass: 'invalid',
+        validClass: "valid",
+        errorPlacement: function (error, element) {
+            $(element)
+                .closest("form")
+                .find("label[for='" + element.attr("id") + "']")
+                .attr('data-error', error.text());
+        },
+        submitHandler: function (form) {
+            console.log(form);
+        }
+    });
+}

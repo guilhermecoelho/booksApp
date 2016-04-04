@@ -2,7 +2,8 @@
   "general": {
 		"send": "Send",
 		"save": "Save",
-		"fill": "fill the field"
+		"fill": "fill the field",
+		"language": "en"
   },
 
   "menu": {

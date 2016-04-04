@@ -4,7 +4,6 @@
 $(document).ready(function () {
 
     createMenu();
-
 });
 
 //create menu itens

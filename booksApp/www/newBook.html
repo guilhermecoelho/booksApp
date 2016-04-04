@@ -14,6 +14,19 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link href="css/materialize/materialize.css" rel="stylesheet" />
     <title>Add book</title>
+    <style>
+         label {
+            width: 100%;
+        }
+        .input-field label {
+            font-size: 0.8rem;
+            -webkit-transform: translateY(-140%);
+            -moz-transform: translateY(-140%);
+            -ms-transform: translateY(-140%);
+            -o-transform: translateY(-140%);
+            transform: translateY(-140%);
+        }
+    </style>
 </head>
 <body>
     <!--menu-->
@@ -22,16 +35,16 @@
     <!--end menu-->
 
     <!-- form-->
-    <form  id="FormNewBook" >
-        <div class="row">
+    <form id="form"  novalidate="novalidate">
+        <div class="row" >
             <div class="input-field col s12">
-                <input id="txtName" type="text" class="validate" required="" aria-required="true">
-                <label for="txtName"data-i18n="newBook.book_name"> </label>
+                <input id="txtName" type="text" name="txtName" class="validate" required="" aria-required="true">
+                <label for="txtName" data-i18n="newBook.book_name"></label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="txtPageTotal" type="number" class="validate" required="" aria-required="true">
+                <input id="txtPageTotal" type="number" name="txtPageTotal" class="validate" required="" aria-required="true">
                 <label for="txtPageTotal" data-i18n="newBook.total_page"></label>
             </div>
         </div>
@@ -66,6 +79,7 @@
 
 <!--plugins -->
 <script src="scripts/plugins/jquery-2.2.1.min.js"></script>
+<script src="scripts/plugins/jquery.validate.min.js"></script>
 <script src="scripts/plugins/materialize.min.js"></script>
 
 <!--i18next -->
@@ -75,4 +89,6 @@
 <!-- scripts da tela -->
 <script type="text/javascript" src="scripts/core.js"></script>
 <script type="text/javascript" src="scripts/pages/newBook.js"></script>
+
+
 
