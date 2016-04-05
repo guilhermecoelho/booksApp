@@ -17,7 +17,7 @@ function createMenu() {
     var newBook = '<li><a href="newBook.html" data-i18n="menu.add"></a></li>';
 
     var merge =
-        '<nav>' +
+        '<nav class="navbar-fixed menu">' +
             righthide +
             index +
             newBook +

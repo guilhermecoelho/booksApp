@@ -1,20 +1,28 @@
 ﻿{
   "general": {
-		"send": "Enviar",
-		"save": "Salvar",
-		"fill": "Preencha o campo",
-		"language": "pt"
+	"send": "Enviar",
+	"save": "Salvar",
+	"required_field": "Este campo é obrigatório",
+	"error": "Um erro ocorrou, por favor tente novamente"
+  },
+
+  "list":{
+	"empty_list": "Não há livros cadastrados",
+	"not_reading": "Não comecei ainda",
+	"total_page": "Número de páginas",
+	"actual_page": "Estou na página"
   },
 
   "menu": {
-    "books": "Livros",
-    "add": "Adicionar livro"
+    "books": "Meus Livros",
+    "add": "Adicionar novo livro"
   },
 
   "newBook": {
     "chkReading": "Estou lendo esse livro no momento",
 	"total_page": "Número de páginas",
 	"actual_page": "Estou na página",
-	"book_name": "Título"
+	"book_name": "Título",
+	"success_save": "Livro adicionado com sucesso"
   }
 }

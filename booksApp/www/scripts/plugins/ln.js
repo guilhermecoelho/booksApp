@@ -21,9 +21,13 @@
             resGetPath: 'locales/__ns__.__lng__.json'
         }, function () {
             $('body').i18n();
-
-            ln.getLanguage();
+            //ln.getLanguage();
         });
+    },
+
+    //translate a specific key
+    key: function (key) {
+        return i18n.t(key);
     },
 
     getLanguage: function () {

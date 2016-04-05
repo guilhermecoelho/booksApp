@@ -5,29 +5,86 @@ $(document).ready(function () {
 
     $('#chkReading').on('click', function () {
         var checked = $("#chkReading").is(':checked');
+        checkIsReading(checked);
+    });
 
-        if (checked === true) {
-            $('#divActualPage').show();
-        } else {
-            $('#divActualPage').hide();
+    setValidation();
+
+    $('#form').validate({
+        messages: {
+            txtName: ln.key('general.required_field'),
+            txtPageTotal: ln.key('general.required_field')
         }
     });
 
-    var t = ln.init();
-    setValidation();
+    //check with is update
+    var key = "";
+    if (window.sessionStorage.length > 0) {
+        for (var i in window.sessionStorage) {
+            key = window.sessionStorage[i];
+        }
+        var object = JSON.parse(window.localStorage.getItem(key));
 
-    i18n.init({
-        lng: "pt"
-    }, function (t) {
-        $(document).i18n();
-    });
+        document.getElementById('txtName').value = object.bookName;
+        document.getElementById('txtPageTotal').value = object.totalPage;
+        document.getElementById('chkReading').checked = object.isReading;
+        document.getElementById('txtPageActual').value = object.actualPage;
 
-    $('#form').validate({
-        messages: "Please specify your total of pages",
-        txtPageTotal: "Please specify your total of pages"
-    });
+        checkIsReading(object.isReading);
+    }
+
+    window.sessionStorage.clear();
 });
 
+
+function checkIsReading(checked) {
+
+    if (checked === true) {
+        $('#divActualPage').show();
+    } else {
+        document.getElementById('txtPageActual').value = "";
+        $('#divActualPage').hide();
+    }
+}
+//save the book on a localStorage
+function saveBook() {
+    try {
+        var key = "";
+        var isNewKey = false;
+
+        while (isNewKey === false) {
+            key = createRandomKey();
+            var object = window.localStorage.getItem(key);
+            if (object === null) {
+                isNewKey = true;
+            }
+        }
+
+        var bookName = document.getElementById('txtName').value;
+        var totalPage = document.getElementById('txtPageTotal').value;
+        var isReading = document.getElementById('chkReading').checked;
+        var actualPage = document.getElementById('txtPageActual').value;
+
+        var finalObject = {
+            key: key,
+            bookName: bookName,
+            totalPage: totalPage,
+            isReading: isReading,
+            actualPage: actualPage
+        }
+
+        window.localStorage.setItem(key, JSON.stringify(finalObject));
+
+        alert(ln.key('newBook.success_save'));
+        window.location = "index.html";
+
+    } catch (err) {
+
+        alert(ln.key('general.error'));
+    }
+
+
+}
 
 //set validation plugin
 function setValidation() {
@@ -41,7 +98,20 @@ function setValidation() {
                 .attr('data-error', error.text());
         },
         submitHandler: function (form) {
-            console.log(form);
+            saveBook();
         }
     });
+}
+
+//create a random key to save the object
+function createRandomKey() {
+    var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+    var string_length = 8;
+    var randomstring = '';
+    for (var i = 0; i < string_length; i++) {
+        var rnum = Math.floor(Math.random() * chars.length);
+        randomstring += chars.substring(rnum, rnum + 1);
+    }
+
+    return randomstring;
 }
