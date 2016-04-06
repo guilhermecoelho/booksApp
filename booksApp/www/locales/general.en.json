@@ -1,15 +1,14 @@
 ﻿{
   "general": {
-		"send": "Send",
-		"save": "Save",
-		"required_field": "This field is required",
-		"error": "A error occurrier, please try again"
-		
+	"send": "Send",
+	"save": "Save",
+	"required_field": "This field is required",
+	"error": "A error occurrier, please try again"
   },
 
   "list":{
 	"empty_list": "There no books on list",
-	"not_reading": "Not started yet",
+	"not_reading": "Not started this book yet",
 	"total_page": "Number of pages",
 	"actual_page": "I´m on page"
   },
@@ -25,5 +24,7 @@
 	"actual_page": "I´m on page",
 	"book_name": "Book´s Name",
 	"success_save": "Book add with success"
+	"maxlength": "The title can´t contain more than 50 letters",
+	"finish": "I finished this book"
   }
 }

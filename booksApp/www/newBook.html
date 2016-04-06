@@ -14,19 +14,6 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link href="css/materialize/materialize.css" rel="stylesheet" />
     <title>Add book</title>
-    <style>
-         label {
-            width: 100%;
-        }
-        .input-field label {
-            font-size: 0.8rem;
-            -webkit-transform: translateY(-140%);
-            -moz-transform: translateY(-140%);
-            -ms-transform: translateY(-140%);
-            -o-transform: translateY(-140%);
-            transform: translateY(-140%);
-        }
-    </style>
 </head>
 <body>
     <!--menu-->
@@ -35,10 +22,11 @@
     <!--end menu-->
 
     <!-- form-->
-    <form id="form"  novalidate="novalidate">
-        <div class="row" >
+    <form id="form" novalidate="novalidate">
+        <input type="hidden" id="hhdKey" />
+        <div class="row">
             <div class="input-field col s12">
-                <input id="txtName" type="text" name="txtName" class="validate" required="" aria-required="true">
+                <input id="txtName" type="text" name="txtName" class="validate" required="" aria-required="true" maxlength="50">
                 <label for="txtName" data-i18n="newBook.book_name"></label>
             </div>
         </div>
@@ -62,6 +50,14 @@
                 <label for="txtPageActual" data-i18n="newBook.actual_page"></label>
             </div>
         </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="checkbox" class="filled-in" id="chkFinish" />
+                <label for="chkFinish" data-i18n="newBook.finish"></label>
+            </div>
+        </div>
+
         <div class="row">
             <div class="input-field col s12">
                 <button class="btn waves-effect waves-light" type="submit" name="action" data-i18n="general.save">

@@ -11,24 +11,38 @@ $(document).ready(function () {
     setValidation();
 
     $('#form').validate({
+        rules: {
+            txtName: {
+                required: true,
+                maxlength: 50
+            }
+        },
         messages: {
-            txtName: ln.key('general.required_field'),
+            txtName: {
+                required: ln.key('general.required_field'),
+                maxlength: ln.key('newBook.maxlength'),
+            },
+
             txtPageTotal: ln.key('general.required_field')
         }
+        
     });
 
     //check with is update
     var key = "";
+    
     if (window.sessionStorage.length > 0) {
         for (var i in window.sessionStorage) {
             key = window.sessionStorage[i];
         }
         var object = JSON.parse(window.localStorage.getItem(key));
-
+        
+        document.getElementById('hhdKey').value = object.key;
         document.getElementById('txtName').value = object.bookName;
         document.getElementById('txtPageTotal').value = object.totalPage;
         document.getElementById('chkReading').checked = object.isReading;
         document.getElementById('txtPageActual').value = object.actualPage;
+        document.getElementById('chkFinish').checked = object.isFinish;
 
         checkIsReading(object.isReading);
     }
@@ -49,9 +63,12 @@ function checkIsReading(checked) {
 //save the book on a localStorage
 function saveBook() {
     try {
-        var key = "";
+        
+        var key = document.getElementById('hhdKey').value;
         var isNewKey = false;
-
+        if (key !== "") {
+            isNewKey = true;
+        }
         while (isNewKey === false) {
             key = createRandomKey();
             var object = window.localStorage.getItem(key);
@@ -64,13 +81,15 @@ function saveBook() {
         var totalPage = document.getElementById('txtPageTotal').value;
         var isReading = document.getElementById('chkReading').checked;
         var actualPage = document.getElementById('txtPageActual').value;
+        var isFinish = document.getElementById('chkFinish').checked;
 
         var finalObject = {
             key: key,
             bookName: bookName,
             totalPage: totalPage,
             isReading: isReading,
-            actualPage: actualPage
+            actualPage: actualPage,
+            isFinish: isFinish
         }
 
         window.localStorage.setItem(key, JSON.stringify(finalObject));

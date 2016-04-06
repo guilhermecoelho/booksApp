@@ -8,7 +8,7 @@
 
   "list":{
 	"empty_list": "Não há livros cadastrados",
-	"not_reading": "Não comecei ainda",
+	"not_reading": "Não comecei este livro ainda",
 	"total_page": "Número de páginas",
 	"actual_page": "Estou na página"
   },
@@ -23,6 +23,8 @@
 	"total_page": "Número de páginas",
 	"actual_page": "Estou na página",
 	"book_name": "Título",
-	"success_save": "Livro adicionado com sucesso"
+	"success_save": "Livro adicionado com sucesso",
+	"maxlength": "O título não pode ter mais que 50 letras",
+	"finish": "Eu terminei este livro"
   }
 }

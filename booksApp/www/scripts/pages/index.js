@@ -24,7 +24,7 @@ $(document).ready(function () {
     createListBooks();
 
     $('ul').on("click", function () {
-        var key = $(this).attr('id');
+        var key = $(this).parent().attr('id');
         window.sessionStorage.setItem(key, key);
         window.location = "newBook.html";
     });
@@ -53,14 +53,17 @@ function createListBooks() {
             var totalPage = ln.key("list.total_page") + ' : ' + listobjects[i].totalPage;
             var bookName = listobjects[i].bookName;
 
-            if (listobjects[i].isReading == false) {
+            if (listobjects[i].isFinish == true) {
+                actualPage = ln.key("newBook.finish");
+            }
+            else if (listobjects[i].isReading == false) {
                 actualPage = ln.key("list.not_reading");
             } else {
                 actualPage = ln.key("list.actual_page") + ' : ' + listobjects[i].actualPage;
             }
 
             var book = $('#divBookExample').clone();
-
+            
             book.attr('style', '');
             book.attr('id', listobjects[i].key);
             book.find('#txtNameBook').text(listobjects[i].bookName);
