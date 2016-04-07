@@ -4,7 +4,9 @@
 	"save": "Save",
 	"delete": "Delete",
 	"required_field": "This field is required",
-	"error": "A error occurrier, please try again"
+	"error": "A error occurrier, please try again",
+	"ok": "OK",
+	"cancel": "Cancel"
   },
 
   "list":{

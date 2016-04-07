@@ -11,11 +11,14 @@ $(document).ready(function () {
 
     //when click on delete button 
     $('#divDeleteBook').on('click', function () {
-        var result = confirm(ln.key('newBook.confirm_delete'));
 
-        if (result == true) {
-            deleteBook();
+        navigator.notification.confirm(ln.key('newBook.confirm_delete'), function (e) {
+            if (e === 1) {
+                deleteBook();
+            }
         }
+        , '', [ln.key('general.ok'), ln.key('general.cancel')]);
+
     });
 
     setValidation();
@@ -111,14 +114,14 @@ function saveBook() {
 
         window.localStorage.setItem(key, JSON.stringify(finalObject));
 
-        alert(ln.key('newBook.success_save'));
-        window.location = "index.html";
+        navigator.notification.alert(ln.key('newBook.success_save'), function () { window.location = "index.html"; }, '', ln.key('general.ok'));
 
     } catch (err) {
 
-        alert(ln.key('general.error'));
+        navigator.notification.alert(ln.key('general.error'), function () { }, '', ln.key('general.ok'));
     }
 }
+
 
 //delete book from localStorage
 function deleteBook() {
@@ -126,12 +129,10 @@ function deleteBook() {
         var key = document.getElementById('hhdKey').value;
         window.localStorage.removeItem(key);
 
-        alert(ln.key('newBook.success_delete'));
-        window.location = "index.html";
+        navigator.notification.alert(ln.key('newBook.success_delete'), function () { window.location = "index.html"; }, '', ln.key('general.ok'));
 
     } catch (e) {
-
-        alert(ln.key('general.error'));
+        navigator.notification.alert(ln.key('general.error'), function () { }, '', ln.key('general.ok'));
     }
 }
 

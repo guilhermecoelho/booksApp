@@ -3,7 +3,10 @@
 "use strict";
 $(document).ready(function () {
     ln.init();
+    document.addEventListener("deviceready", function () { }, false);
+
     createMenu();
+
 });
 
 //create menu itens

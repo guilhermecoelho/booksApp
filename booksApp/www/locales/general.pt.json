@@ -4,7 +4,9 @@
 	"save": "Salvar",
 	"delete": "Excluir",
 	"required_field": "Este campo é obrigatório",
-	"error": "Um erro ocorrou, por favor tente novamente"
+	"error": "Um erro ocorrou, por favor tente novamente",
+	"ok": "Seguir",
+	"cancel": "Cancelar"
   },
 
   "list":{
