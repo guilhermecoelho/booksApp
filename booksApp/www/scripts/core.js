@@ -2,7 +2,7 @@
 
 "use strict";
 $(document).ready(function () {
-
+    ln.init();
     createMenu();
 });
 

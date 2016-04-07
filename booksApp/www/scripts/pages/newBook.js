@@ -3,13 +3,24 @@
 "use strict";
 $(document).ready(function () {
 
+    //on check
     $('#chkReading').on('click', function () {
         var checked = $("#chkReading").is(':checked');
         checkIsReading(checked);
     });
 
+    //when click on delete button 
+    $('#divDeleteBook').on('click', function () {
+        var result = confirm(ln.key('newBook.confirm_delete'));
+
+        if (result == true) {
+            deleteBook();
+        }
+    });
+
     setValidation();
 
+    //validation configuration
     $('#form').validate({
         rules: {
             txtName: {
@@ -25,18 +36,18 @@ $(document).ready(function () {
 
             txtPageTotal: ln.key('general.required_field')
         }
-        
+
     });
 
     //check with is update
     var key = "";
-    
+
     if (window.sessionStorage.length > 0) {
         for (var i in window.sessionStorage) {
             key = window.sessionStorage[i];
         }
         var object = JSON.parse(window.localStorage.getItem(key));
-        
+
         document.getElementById('hhdKey').value = object.key;
         document.getElementById('txtName').value = object.bookName;
         document.getElementById('txtPageTotal').value = object.totalPage;
@@ -45,12 +56,15 @@ $(document).ready(function () {
         document.getElementById('chkFinish').checked = object.isFinish;
 
         checkIsReading(object.isReading);
+
+        $('#divDeleteBook').show();
     }
 
+    //clear sessionStorage
     window.sessionStorage.clear();
 });
 
-
+//action when check/uncheck is reading box
 function checkIsReading(checked) {
 
     if (checked === true) {
@@ -60,15 +74,18 @@ function checkIsReading(checked) {
         $('#divActualPage').hide();
     }
 }
+
 //save the book on a localStorage
 function saveBook() {
     try {
-        
+
         var key = document.getElementById('hhdKey').value;
         var isNewKey = false;
+
         if (key !== "") {
             isNewKey = true;
         }
+
         while (isNewKey === false) {
             key = createRandomKey();
             var object = window.localStorage.getItem(key);
@@ -101,8 +118,21 @@ function saveBook() {
 
         alert(ln.key('general.error'));
     }
+}
 
+//delete book from localStorage
+function deleteBook() {
+    try {
+        var key = document.getElementById('hhdKey').value;
+        window.localStorage.removeItem(key);
 
+        alert(ln.key('newBook.success_delete'));
+        window.location = "index.html";
+
+    } catch (e) {
+
+        alert(ln.key('general.error'));
+    }
 }
 
 //set validation plugin

@@ -2,6 +2,7 @@
   "general": {
 	"send": "Send",
 	"save": "Save",
+	"delete": "Delete",
 	"required_field": "This field is required",
 	"error": "A error occurrier, please try again"
   },
@@ -10,7 +11,7 @@
 	"empty_list": "There no books on list",
 	"not_reading": "Not started this book yet",
 	"total_page": "Number of pages",
-	"actual_page": "I´m on page"
+	"actual_page": "I am on page"
   },
 
   "menu": {
@@ -21,10 +22,12 @@
   "newBook": {
     "chkReading": "I reading this book now",
 	"total_page": "Number of pages",
-	"actual_page": "I´m on page",
-	"book_name": "Book´s Name",
-	"success_save": "Book add with success"
-	"maxlength": "The title can´t contain more than 50 letters",
-	"finish": "I finished this book"
+	"actual_page": "I am on page",
+	"book_name": "Book  Name",
+	"success_save": "Book add with success",
+	"maxlength": "The title cant contain more than 50 letters",
+	"finish": "I finished this book",
+	"confirm_delete": "Do you really want delete this book?",
+	"success_delete": "Book delete with success"
   }
 }

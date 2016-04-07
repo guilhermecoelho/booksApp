@@ -20,18 +20,19 @@
 })();
 
 $(document).ready(function () {
-
-    createListBooks();
-
-    $('ul').on("click", function () {
-        var key = $(this).parent().attr('id');
-        window.sessionStorage.setItem(key, key);
-        window.location = "newBook.html";
-    });
-
+    //ln.init();
+   
+    $('#divLoad').show();
+    setTimeout(createListBooks, 1000);
+    
 });
 
 function createListBooks() {
+
+    var totalPageString = i18n.t("list.total_page");
+    var finishBookString = i18n.t("newBook.finish");
+    var notReadingString = i18n.t("list.not_reading");
+    var actualPageString = i18n.t("list.actual_page");
 
     if (window.localStorage.length === 0) {
         var message = ln.key("list.empty_list");
@@ -48,18 +49,18 @@ function createListBooks() {
             if (listobjects[i].counter === 0) {
                 break;
             }
-
+            
             var actualPage;
-            var totalPage = ln.key("list.total_page") + ' : ' + listobjects[i].totalPage;
+            var totalPage = totalPageString + ' : ' + listobjects[i].totalPage;
             var bookName = listobjects[i].bookName;
 
             if (listobjects[i].isFinish == true) {
-                actualPage = ln.key("newBook.finish");
+                actualPage = finishBookString;
             }
             else if (listobjects[i].isReading == false) {
-                actualPage = ln.key("list.not_reading");
+                actualPage = notReadingString;
             } else {
-                actualPage = ln.key("list.actual_page") + ' : ' + listobjects[i].actualPage;
+                actualPage = actualPageString + ' : ' + listobjects[i].actualPage;
             }
 
             var book = $('#divBookExample').clone();
@@ -72,5 +73,14 @@ function createListBooks() {
 
             $('article').append(book);
         }
+
+        $('ul').on("click", function () {
+            var key = $(this).parent().attr('id');
+            window.sessionStorage.setItem(key, key);
+            window.location = "newBook.html";
+        });
+       
     }
+
+    $('#divLoad').hide();
 }

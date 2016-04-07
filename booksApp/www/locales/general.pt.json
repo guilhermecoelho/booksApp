@@ -2,6 +2,7 @@
   "general": {
 	"send": "Enviar",
 	"save": "Salvar",
+	"delete": "Excluir",
 	"required_field": "Este campo é obrigatório",
 	"error": "Um erro ocorrou, por favor tente novamente"
   },
@@ -25,6 +26,8 @@
 	"book_name": "Título",
 	"success_save": "Livro adicionado com sucesso",
 	"maxlength": "O título não pode ter mais que 50 letras",
-	"finish": "Eu terminei este livro"
+	"finish": "Eu terminei este livro",
+	"confirm_delete": "Deseja realmente excluir este livro?",
+	"success_delete": "Livro excluido com sucesso"
   }
 }
